@@ -43,7 +43,7 @@ def test_preprocess():
         url='https://dumps.wikimedia.org/enwiktionary/20231201/enwiktionary-20231201-pages-articles-multistream-index.txt.bz2'
     )
 
-    with open(save_path) as f_actual, open('expected_preprocess_results.csv') as f_expected:
+    with open(save_path) as f_actual, open('expected_preprocess_result.csv') as f_expected:
         actual = set(line.strip() for line in f_actual)
         expected = set(line.strip() for line in f_expected)
         assert actual == expected
