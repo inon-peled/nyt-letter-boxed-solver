@@ -1,4 +1,4 @@
-from os import chdir
+import os
 
 from preprocess import preprocess
 from solve import solve
@@ -35,8 +35,11 @@ def test_solve_3():
 
 
 def test_preprocess():
-    chdir('tests')
+    os.chdir('tests')
     save_path = 'test_preprocess_result.csv'
+
+    if os.path.exists(save_path):
+        os.remove(save_path)
 
     preprocess(
         save_path=save_path,
