@@ -1,3 +1,5 @@
+from os import chdir
+
 from preprocess import preprocess
 from solve import solve
 
@@ -33,14 +35,15 @@ def test_solve_3():
 
 
 def test_preprocess():
-    save_path = 'tests/test_preprocess_result.csv'
+    chdir('tests')
+    save_path = 'test_preprocess_result.csv'
 
     preprocess(
         save_path=save_path,
         url='https://dumps.wikimedia.org/enwiktionary/20231201/enwiktionary-20231201-pages-articles-multistream-index.txt.bz2'
     )
 
-    with open(save_path) as f_actual, open('tests/expected_preprocess_results.csv') as f_expected:
+    with open(save_path) as f_actual, open('expected_preprocess_results.csv') as f_expected:
         actual = set(line.strip() for line in f_actual)
         expected = set(line.strip() for line in f_expected)
         assert actual == expected
