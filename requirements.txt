@@ -1,4 +1,7 @@
-# NOTE: the following is needed only for creating english_words.csv in the preprocessing step.
+# The following is needed only for creating english_words.csv in the preprocessing step.
 # If you already have the preprocessed file and do not wish to use Wiktionary's latest entries, you can skip this step.
 requests==2.31.0
 pyenchant==3.2.2
+
+# The following is needed only for testing.
+pytest==7.4.3
