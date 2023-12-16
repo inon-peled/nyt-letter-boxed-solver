@@ -1,11 +1,14 @@
+"""
+1. Assign the letters of the letterbox to LETTERBOX below.
+    * Use exactly 12 letters, no spaces, no punctuation.
+    * First the 3 letters of one letterbox edge (say, top edge), then the 3 letters of another edge, etc.
+    * Letter case does not matter.
+2. Run this script.
+"""
+LETTERBOX = 'wcmhksobetai'
+
 from preprocess import preprocess
 from solve import solve
-
-# ==== Assign the letters of the letterbox to the following constant.
-# * Use exactly 12 letters, no spaces, no punctuation.
-# * First the 3 letters of one letterbox edge (say, top edge), then the 3 letters of another edge, etc.
-# * Letter case does not matter.
-LETTERBOX = 'wcmhksobetai'
 
 
 def main(letters):

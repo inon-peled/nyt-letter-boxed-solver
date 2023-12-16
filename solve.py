@@ -1,9 +1,3 @@
-"""
-Solver for the New York Times' Letter Boxed Daily Puzzle Game:
-https://www.nytimes.com/puzzles/letter-boxed
-"""
-
-
 def _load_english_words(input_csv_path):
     """Load English words from a file."""
     with open(input_csv_path) as f:
