@@ -1,26 +1,12 @@
 """
 Solver for the New York Times' Letter Boxed Daily Puzzle Game:
 https://www.nytimes.com/puzzles/letter-boxed
-
-
-List of English words was extracted from
-https://dumps.wikimedia.org/enwiktionary/20231201/enwiktionary-20231201-pages-articles-multistream-index.txt.bz2
-via
-```cat ./enwiktionary-20231201-pages-articles-multistream-index.txt |
-    cut -f3 -d: |
-    grep -E '^[a-z]*$' >
-    ./only_small_caps.csv
-```
 """
 
-# NOTE: you'll also need to install external libraries for the following import to work.
-# In macOS, these libraries can be installed via `brew install enchant`
-import enchant
 
-
-def _load_words():
-    """Load words from a file."""
-    with open('only_small_caps.csv') as f:
+def _load_english_words(input_csv_path):
+    """Load English words from a file."""
+    with open(input_csv_path) as f:
         return {line.strip() for line in f.readlines()}
 
 
@@ -28,11 +14,7 @@ def _narrow_down(words, letters):
     """Narrow down to English words that consist only of the given letters, disregarding box edges."""
     letters_set = set(letters.lower())
     narrowed = {word for word in words if not (set(word) - letters_set)}
-
-    english_dict = enchant.Dict('en_US')
-    narrowed_english = {word for word in narrowed if english_dict.check(word)}
-
-    return narrowed_english
+    return narrowed
 
 
 def _is_eligible(word, edge_indexes):
@@ -75,10 +57,10 @@ def _find_single_word_solutions(eligible_words, letters):
     return single_word_solutions
 
 
-def solve(letters):
+def solve(english_words_csv_path, letters):
     assert len(letters) == 12 and len(set(letters)) == 12 and letters.isalpha()
 
-    all_words = _load_words()
+    all_words = _load_english_words(input_csv_path=english_words_csv_path)
     narrowed = _narrow_down(all_words, letters)
     eligible = _eligible_words(narrowed, letters)
 
