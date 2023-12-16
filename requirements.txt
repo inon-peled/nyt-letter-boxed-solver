@@ -1,0 +1,2 @@
+pyenchant==3.2.2
+graphviz==0.20.1
